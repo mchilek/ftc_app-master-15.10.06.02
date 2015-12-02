@@ -2,7 +2,7 @@ package com.qualcomm.ftcrobotcontroller.opmodes;
 import com.qualcomm.ftccommon.DbgLog;
 import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.ftccommon.DbgLog;
+//import com.qualcomm.ftccommon.DbgLog;
 //import com.qualcomm.robotcore.util.Range;
 
 
@@ -19,11 +19,12 @@ public class EOPD_TEST extends OpMode {
     public void init() {
         opticalDistanceSensor = hardwareMap.opticalDistanceSensor.get("ODS");
         v_sensor_ods = hardwareMap.opticalDistanceSensor.get("ODS");
-        telemetry.addData("ODS Value", "Hello!");
+        telemetry.addData("ODS_Value", "Hello!");
+        telemetry.addData("DirectionChange", "D-Start");
 
         try
         {
-            v_sensor_ods = hardwareMap.opticalDistanceSensor.get ("sensor_ods");
+            v_sensor_ods = hardwareMap.opticalDistanceSensor.get("sensor_ods");
         }
         catch (Exception p_exeception)
         {
@@ -58,12 +59,12 @@ public class EOPD_TEST extends OpMode {
         double odsReading = opticalDistanceSensor.getLightDetected();
         //double odsReading2 = opticalDistanceSensor.getLightDetectedRaw();
 
-        telemetry.addData("ODS Value", odsReading);
+        telemetry.addData("ODS_Value", odsReading);
 
         if ( odsReading < 1) {
             telemetry.addData("DirectionChange", "too close");
         } else if (odsReading > 8 ) {
-            telemetry.addData("ODS Value", "too far");
+            telemetry.addData("ODS_Value", "too far");
         }
         //distanceSensor = hardwareMap.opticalDistanceSensor.get("dist1");
         //int lineSensor = distanceSensor.getLightDetectedRaw();
